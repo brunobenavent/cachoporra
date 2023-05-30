@@ -12,7 +12,6 @@ import {
     nuevoPassword
 } from '../controllers/usuarioControllers.js'
 
-
 const router = express.Router();
 
 router.get( '/login', formularioLogin );

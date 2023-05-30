@@ -33,6 +33,22 @@ const UsuarioSchema = Schema({
         type: Boolean,
         default: true
     },
+    credito: {
+        type: Number,
+        default: 0
+    },
+    porrasParticipadas: [
+        {
+        type: Schema.Types.ObjectId,
+        ref: 'Porra'
+        }
+    ],
+    porrasGanadas: [
+        {
+        type: Schema.Types.ObjectId,
+        ref: 'Porra'
+        }
+    ]
     // google: {
     //     type: Boolean,
     //     default: false

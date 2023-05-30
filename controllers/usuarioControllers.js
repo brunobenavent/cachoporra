@@ -57,7 +57,7 @@ const autenticar = async(req, res) => {
   return res.cookie('_token', token, {
     httpOnly: true,
 
-  }).redirect('/cachoporra')
+  }).redirect('/partidos')
 
 }
 

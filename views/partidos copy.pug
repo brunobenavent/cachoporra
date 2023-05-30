@@ -1,0 +1,60 @@
+extends ./layout/index
+
+block contenido
+    div.py-10
+        h1.text-4xl.my-10.font-extrabold.text-center Cacho
+            span.font-normal Porra
+        h2.text-center.text-2xl.font-extrabold=pagina
+        if errores
+            div(class="max-w-md mx-auto my-10")
+                each error in errores
+                    p.bg-red-600.text-white.uppercase.text-xs.text-center.p-2.mb-1.font-bold=error.msg
+
+        div.mt-8.mx-auto.max-w-lg
+            div.bg-white.py-8.px-4.shadow
+
+                table(class="table-auto mx-auto")
+                    thead
+                        tr.bg-indigo-500.text-white
+                            th Estado
+                            th Equipo 1
+                            th Resultado
+                            th Equipo 2
+                    tbody
+                        each partido in partidos
+
+                            li(class='flex justify-between gap-x-6 py-5')
+                                div(class='flex gap-x-4')
+
+                                    img(class='h-12 w-12 flex-none rounded-full bg-gray-50', src='https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80', alt='imagen escudo equipo')
+                                    div(class='min-w-0 flex-auto')
+                                        p(class='text-sm font-semibold leading-6 text-gray-900') Real Madrid
+                                div(class='hidden sm:flex sm:flex-col sm:items-end')
+                                    p(class='text-sm leading-6 text-gray-900') 2-1
+                                    p(class='mt-1 text-xs leading-5 text-gray-500') Finalizado
+                                div(class='flex gap-x-4')
+
+                                    img(class='h-12 w-12 flex-none rounded-full bg-gray-50', src='https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80', alt='imagen escudo equipo')
+                                    div(class='min-w-0 flex-auto')
+                                        p(class='text-sm font-semibold leading-6 text-gray-900') Sevilla
+
+
+
+                            tr
+                                td
+                                    if partido.estado === 'Finalizado'
+                                        span(class="text-green-500")= partido.estado
+                                    else if partido.estado === 'sin comenzar'
+                                        span(class="text-blue-500")= partido.estado
+                                    else
+                                        span(class="text-gray-500")= partido.estado
+                                td
+                                    img(src=partido.imgEq1, alt=partido.equipo1)
+                                    p= partido.equipo1
+                                td= partido.resultado
+                                td
+                                    img(src=partido.imgEq2, alt=partido.equipo2)
+                                    p= partido.equipo2
+
+
+

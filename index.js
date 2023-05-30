@@ -1,9 +1,10 @@
 import express from 'express'
 import dotenv from 'dotenv'
-// import cors from 'cors'
+import cors from 'cors'
 
 import scrapRoutes from './routes/scrapRoutes.js'
 import usuarioRoutes from './routes/usuarioRoutes.js'
+import partidosRoutes from './routes/partidosRoutes.js'
 import db from './config/db.js'
 
 
@@ -27,7 +28,7 @@ app.set('views', './views')
 app.use(express.static('public'))
 
 // CORS
-// app.use(cors());
+app.use(cors());
 
 // Lectura y parseo del body
 app.use(express.json())
@@ -38,6 +39,7 @@ app.use(express.urlencoded({extended:true}))
 // Routing
 app.use('/auth', usuarioRoutes)
 app.use('/api/resultados', scrapRoutes)
+app.use('/', partidosRoutes)
 
 // Definir un puerto y arrancar el proyecto
 const port =  process.env.PORT || 8080;
